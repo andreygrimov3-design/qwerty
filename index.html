@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  <!-- кодировка русского языка -->
+    <title>незон</title>
+    <link rel="stylesheet" href="sw.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container"> 
+            <div class="logo">
+                <h1>неозон</h1>
+            </div>
+            <p>незон это маркетплейс для покупки игровых предметов</p>
+            <nav>
+                <a href="#main">главная</a>
+                <a href="#products">игры</a>
+                <a href="#technique">техника</a>
+                <a href="#questions">вопросы</a>
+                <a href="#cart">корзина (<span id="cart-count">0</span>)</a>
+                <button id="theme-switcher">🌞</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <h3>почему незон</h3>
+        <ul>
+            <li>оверпрайс</li>
+            <li>доставка от года</li>
+            <li>небольшой выбор</li>
+            <li>честность</li>
+        </ul>
+
+        <section id="products">
+            <h2>игры</h2>
+            <div class="filter-container">
+                <div class="filter-buttons">
+                    <button onclick="filterProducts('all')" class="filter-btn active"> все</button>
+                    <button onclick="filterProducts('low')" class="filter-btn">дешевые</button>
+                    <button onclick="filterProducts('medium')" class="filter-btn">средние</button>
+                    <button onclick="filterProducts('high')" class="filter-btn">дорогие</button>
+                </div>
+            </div>
+            <!--   добавлен класс product-grid для сетки -->
+            <div class="product-grid">
+                <!-- пины -->
+                <article class="product-card">
+                    <div class="product-info">
+                        <img src="гоблин-плачет-гоблин.png" alt="пины с гоблинами">
+                        <h3>пины с гоблинами</h3>
+                        <div class="product-footer">
+                            <p class="price">цена: 10000 руб.</p>
+                            <button class="details-btn" style="display:none;">подробнее</button>
+                            <button class="add-to-cart-btn">в корзину</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- скины awp -->
+                <article class="product-card">
+                    <div class="product-info">
+                        <img src="weapon_awp_cu_awp_chroma_pink_light_large.afc69cbf51b04e24149744b6ee1d998cc18d3002.png" alt="скины на awp">
+                        <h3>скины на awp</h3>
+                        <div class="product-footer">
+                            <p class="price">цена: 100000 руб.</p>
+                            <button class="add-to-cart-btn">в корзину</button>
+                            <button class="details-btn" style="display:none;">подробнее</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- маска пей дай 2 -->
+                <article class="product-card">
+                    <div class="product-info">
+                        <img src="gratis-png-payday-2-hotline-miami-2-mascara-de-chaqueta-de-numero-equivocado-2.png" alt="маска пей дай 2">
+                        <h3>маска на персонажей пей дай 2</h3>
+                        <div class="product-footer">
+                            <p class="price">цена: 1000 руб.</p>
+                            <button class="add-to-cart-btn">в корзину</button>
+                            <button class="details-btn" style="display:none;">подробнее</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="technique">
+            <h2>техника</h2>
+            <div class="product-grid">
+                <!-- геймпад -->
+                <article class="product-card">
+                    <div class="product-info">
+                        <img src="optimize__21_.png" alt="геймпад">
+                        <h3>геймпад</h3>
+                        <div class="product-footer">
+                            <p class="price">цена: 10000 руб.</p>
+                            <p>оригинальный игровой геймпад PS5</p>
+                            <!--   исправлен класс (было add-to-card-btn) -->
+                            <button class="add-to-cart-btn">в корзину</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- сноуборд -->
+                <article class="product-card">
+                    <div class="product-info">
+                        <img src="arbor-terrapin-2019-pr-1000x1000.jpg" alt="сноуборд">
+                        <h3>сноуборд</h3>
+                        <div class="product-footer">
+                            <p class="price">цена: 250000 руб.</p>
+                            <p>сноуборд для фрирайда Arbor Terrapin 18/19</p>
+                            <button class="add-to-cart-btn">в корзину</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="questions">
+            <h2>вопросы</h2>
+            <div>
+                <details>
+                    <summary>как работает доставка</summary>
+                    <p>доставка происходит в течение 2-3 лет</p>
+                </details>
+                <details>
+                    <summary>ЕСТЬ РАССРОЧКА?</summary>
+                    <p>да под 200%</p>
+                </details>
+                <details>
+                    <summary>точно привезете?</summary>
+                    <p>не факт</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!--   секция корзины вынесена из main, но можно и внутри -->
+    <section id="cart">
+        <h2>корзина</h2>
+        <div id="cart-items">
+            <div class="empty-cart">Корзина пуста</div>
+        </div>
+        <div id="cart-total">
+            <p>итого: <span id="total-price">0</span> руб.</p>
+            <button onclick="checkout()" class="checkout-btn">оплатить</button>
+            <button onclick="clearCart()">очистить корзину</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>все права защищены</p>
+        <p>политика конфиденциальности</p>
+        <p>контакты</p>
+        <p>© 2025 незон</p>
+    </footer>
+
+</body>
+</html>
